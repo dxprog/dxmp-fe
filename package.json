@@ -1,0 +1,19 @@
+{
+  "name": "dxmp-fe",
+  "version": "1.0.0",
+  "description": "Music playing front end for dxMusicPage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxprog/dxmp-fe.git"
+  },
+  "author": "Matt Hackmann",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/dxprog/dxmp-fe/issues"
+  },
+  "homepage": "https://github.com/dxprog/dxmp-fe#readme"
+}
