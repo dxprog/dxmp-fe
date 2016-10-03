@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/dxprog/dxmp-fe/issues"
   },
-  "homepage": "https://github.com/dxprog/dxmp-fe#readme"
+  "homepage": "https://github.com/dxprog/dxmp-fe#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-sass": "^1.2.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2"
+  }
 }
