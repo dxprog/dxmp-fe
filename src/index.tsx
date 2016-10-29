@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Songs } from './data/songs';
 import { Albums } from './data/albums';
 
-import { Hello } from './components/Hello';
+import { List } from './components/List';
 
 const songs = new Songs();
 const albums = new Albums();
@@ -13,7 +13,7 @@ Promise.all([
   albums.getAll()
 ]).then(results => {
   ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <List songs={results[0]} albums={results[1]} />,
     document.getElementById('example')
   );
 });
