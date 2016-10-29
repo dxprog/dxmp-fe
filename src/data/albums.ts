@@ -9,8 +9,12 @@ export class Albums extends DataConnector {
   }
 
   public async getAll(): Promise<Array<Album>> {
-    const data = await this.get('/albums');
-    this.albums = data as Array<Album>;
+    this.albums = await this.get('/albums') as Array<Album>;
+    this.albums.forEach(album => {
+      if (album.art) {
+        album.artUrl = `http://dxmp.s3.amazonaws.com/images/${album.title.toLowerCase().replace(/[\s\W]+/gi, '-')}-album-art.jpg`;
+      }
+    });
     return this.albums;
   }
 }
