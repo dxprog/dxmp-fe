@@ -8,7 +8,9 @@ export class Songs extends DataConnector {
     super();
   }
 
-  public async getAll() {
+  public async getAll(): Promise<Array<Song>> {
     const data = await this.get('/songs');
+    this.songs = data as Array<Song>;
+    return this.songs;
   }
 }

@@ -11,6 +11,7 @@ export class DataConnector {
   private async call(url: string, method: string = 'GET', payload: Object = {}): Promise<Object> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
+      url = `/api/content${url}`;
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {

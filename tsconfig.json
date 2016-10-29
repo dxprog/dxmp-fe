@@ -10,9 +10,11 @@
   "files": [
     "./typings/index.d.ts",
     "./src/interfaces/song.ts",
+    "./src/interfaces/album.ts",
     "./src/components/Hello.tsx",
     "./src/data/data-connector.ts",
     "./src/data/songs.ts",
+    "./src/data/albums.ts",
     "./src/index.tsx"
   ]
 }
