@@ -14,6 +14,6 @@ Promise.all([
 ]).then(results => {
   ReactDOM.render(
     <Page songs={results[0]} albums={results[1]} />,
-    document.getElementById('example')
+    document.getElementById('root')
   );
 });
