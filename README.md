@@ -15,4 +15,7 @@ webpack
 
 # Watch
 webpack --progress --colors --watch
+
+# Run the server
+npm run server
 ```
