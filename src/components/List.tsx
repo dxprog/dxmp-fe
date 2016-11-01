@@ -10,8 +10,10 @@ export interface ListProps {
 
 export class List extends React.Component<ListProps, {}> {
   render() {
-    return <ul>
-      {this.props.albums.map(album => <ListImageItem imageUrl={album.artUrl} title={album.title} />)}
-    </ul>;
+    return ( 
+      <ul>
+        {this.props.albums.map(album => <ListImageItem imageUrl={album.artUrl} title={album.title} />)}
+      </ul>
+    );
   }
 }

@@ -12,11 +12,13 @@ export interface ArrayListProps {
 
 export class AlbumList extends React.Component<ArrayListProps, {}> {
   render() {
-    return <ul key="album-${this.props.album.id}">
-      <ListImageItem imageUrl={this.props.album.artUrl} title={this.props.album.title} id={this.props.album.id} />
-      <ul>
-        {this.props.songs.filter(song => song.album_id === this.props.album.id).map(song => <ListSimpleItem title={song.title} id={song.id} />)}
+    return ( 
+      <ul key="album-${this.props.album.id}">
+        <ListImageItem imageUrl={this.props.album.artUrl} title={this.props.album.title} id={this.props.album.id} />
+        <ul>
+          {this.props.songs.filter(song => song.album_id === this.props.album.id).map(song => <ListSimpleItem title={song.title} id={song.id} />)}
+        </ul>
       </ul>
-    </ul>;
+    );
   }
 }

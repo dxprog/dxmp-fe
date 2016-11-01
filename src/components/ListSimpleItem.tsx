@@ -7,8 +7,10 @@ export interface ListSimpleItemProps {
 
 export class ListSimpleItem extends React.Component<ListSimpleItemProps, {}> {
   render() {
-    return <li key={this.props.id}>
-      <h3>{this.props.title}</h3>
-    </li>;
+    return (
+      <li key={this.props.id}>
+        <h3>{this.props.title}</h3>
+      </li>
+    );
   }
 }
