@@ -11,8 +11,10 @@ export interface PageProps {
 
 export class Page extends React.Component<PageProps, {}> {
   render() {
-    return <div id="page">
-      {this.props.albums.map(album => <AlbumList album={album} songs={this.props.songs} />)}
-    </div>;
+    return (
+      <div id="page">
+        {this.props.albums.map(album => <AlbumList album={album} songs={this.props.songs} />)}
+      </div>
+    );
   }
 }

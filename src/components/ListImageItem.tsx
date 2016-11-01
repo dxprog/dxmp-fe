@@ -8,9 +8,11 @@ export interface ListImageItemProps {
 
 export class ListImageItem extends React.Component<ListImageItemProps, {}> {
   render() {
-    return <li key={this.props.id}>
-      <img src={this.props.imageUrl} alt={this.props.title} />
-      <h3>{this.props.title}</h3>
-    </li>;
+    return (
+      <li key={this.props.id}>
+        <img src={this.props.imageUrl} alt={this.props.title} />
+        <h3>{this.props.title}</h3>
+      </li>
+    );
   }
 }
