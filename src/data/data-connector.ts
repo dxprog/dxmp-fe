@@ -1,6 +1,10 @@
+import { DxApiResponse } from '../interfaces/dxapi';
+
 interface HttpParameters {
   [key: string]: string
 }
+
+const API_HOST = 'http://dxmp.us';
 
 export class DataConnector {
 
@@ -8,10 +12,16 @@ export class DataConnector {
     return this.call(this.buildUrl(url, params));
   }
 
-  private async call(url: string, method: string = 'GET', payload: Object = {}): Promise<Object> {
+  public async getContent(contentType: string, params: HttpParameters = {}) {
+    const payload: DxApiResponse = await this.call(this.buildUrl('', { contentType, method: 'content.getContent' }));
+    const { body } = payload;
+    return body.content;
+  }
+
+  private async call(url: string, method: string = 'GET', payload: Object = {}): Promise<any> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      url = `/api/content${url}`;
+      url = `${API_HOST}/api/${url}`;
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
@@ -32,7 +42,7 @@ export class DataConnector {
   }
 
   private buildUrl(url: string, params: HttpParameters = {}) {
-    const hasQueryString = url.indexOf('?');
+    const hasQueryString = url.indexOf('?') > -1;
     const kvps = Object.keys(params).map(key => {
       return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`;
     });
