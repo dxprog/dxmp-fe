@@ -15,28 +15,20 @@ interface ArrayListProps {
   onSongClick: SongClickCallback;
 }
 
-function songClick(evt: MouseEvent) {
-  const audio = document.createElement('audio');
-  audio.addEventListener('canplaythrough', evt => {
-    audio.play();
-  });
-  audio.src = `http://dxmp.s3.amazonaws.com/songs/${this.filename}`;
-  audio.load();
-}
-
 export class AlbumList extends React.Component<ArrayListProps, {}> {
   render() {
+    const { album } = this.props;
     return (
-      <ul key={`album-${this.props.album.id}`}>
-        <ListImageItem imageUrl={this.props.album.artUrl} title={this.props.album.title} id={this.props.album.id} />
+      <ul key={`album-${album.id}`}>
+        <ListImageItem imageUrl={album.artUrl} title={album.title} id={album.id} />
         <ul>
           {this.props.songs
-            .filter(song => song.album_id === this.props.album.id)
-            .map(song => 
-              <ListSimpleItem 
-                title={song.title} 
-                id={song.id} 
-                onClick={() => this.props.onSongClick(song, this.props.album)} />
+            .map(song =>
+              <ListSimpleItem
+                key={`song-${song.id}`}
+                title={song.title}
+                id={song.id}
+                onClick={() => this.props.onSongClick(song, album)} />
             )}
         </ul>
       </ul>

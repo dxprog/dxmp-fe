@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface ListSimpleItemProps {
+interface ListSimpleItemProps {
   id: number;
   title: string;
   onClick: Function;
