@@ -9,7 +9,7 @@ export class Songs extends DataConnector {
   }
 
   public async getAll(): Promise<Array<Song>> {
-    const data = await this.getContent('song');
+    const data = await this.getContent('song', { max: '0' });
     this.songs = data.map(this.convertDxApiToSong);
     return this.songs;
   }

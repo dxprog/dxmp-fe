@@ -13,7 +13,8 @@ export class DataConnector {
   }
 
   public async getContent(contentType: string, params: HttpParameters = {}) {
-    const payload: DxApiResponse = await this.call(this.buildUrl('', { contentType, method: 'content.getContent' }));
+    params = Object.assign(params, { contentType, method: 'content.getContent' });
+    const payload: DxApiResponse = await this.call(this.buildUrl('', params));
     const { body } = payload;
     return body.content;
   }
