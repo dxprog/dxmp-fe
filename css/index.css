@@ -37,8 +37,7 @@ h3 {
 .albumListItemHeader > img {
   margin-right: 16px;
   height: 50px;
-  min-width: 50px;
-  max-width: 50px;
+  width: 50px;
 }
 
 .songListItem {
