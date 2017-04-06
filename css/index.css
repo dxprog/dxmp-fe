@@ -25,28 +25,38 @@ h3 {
   flex-direction: row;
   padding: 4px;
   cursor: pointer;
+  transition: padding-left 0.25s;
 }
 
 .albumListItemHeader:hover {
-  background-color: #202040;
+  background-color: #303030;
+  padding-left: 12px;
+  transition: padding-left 0.25s;
 }
 
 .albumListItemHeader > img {
-  border: 1px solid #a0a0a0;
   margin-right: 16px;
   height: 50px;
   min-width: 50px;
   max-width: 50px;
 }
 
-.songList {
-  padding: 16px;
+.songListItem {
+  padding: 4px 4px 4px 16px;
+  transition: padding-left 0.25s;
 }
 
-.songListItem {
-  margin-bottom: 8px;
+.songListItem:first-child {
+  padding-top: 8px;
 }
 
 .songListItem:last-child {
-  margin-bottom: 0;
+  padding-bottom: 8px;
+}
+
+.songListItem:hover {
+  background-color: #303030;
+  cursor: pointer;
+  padding-left: 24px;
+  transition: padding-left 0.25s;
 }

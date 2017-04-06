@@ -4,11 +4,11 @@ import { Song } from '../interfaces/song';
 
 import { AlbumListItemHeader } from './AlbumListItemHeader';
 import { SongList } from './SongList';
-import { ListSimpleItem } from './ListSimpleItem';
 
 interface Props {
   album: Album;
   songs: Array<Song>;
+  onSongClick: Function;
 }
 
 interface State {
@@ -45,7 +45,7 @@ export class AlbumListItem extends React.Component<Props, State> {
             id={this.props.album.id}
           />
         </div>
-        {this.state.showSongList ? <SongList songs={this.props.songs} /> : null}
+        {this.state.showSongList ? <SongList album={this.props.album} songs={this.props.songs} onSongClick={this.props.onSongClick}/> : null}
       </li>
     );
   }

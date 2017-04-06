@@ -11,12 +11,12 @@ export class AlbumListItemHeader extends React.Component<Props, undefined> {
 
   render() {
     return (
-      <li className="albumListItemHeader" key={this.props.id}>
+      <div className="albumListItemHeader" key={this.props.id}>
         <img 
           src={this.props.imageUrl || ''} 
         />
         <h3>{this.props.title}</h3>
-      </li>
+      </div>
     );
   }
 }
