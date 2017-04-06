@@ -32,4 +32,8 @@ module.exports = {
     "react": "React",
     "react-dom": "ReactDOM"
   },
+
+  watchOptions: {
+    poll: true,
+  },
 };

@@ -2,19 +2,21 @@ import * as React from 'react';
 import { Album } from '../interfaces/album';
 import { Song } from '../interfaces/song';
 
-import { AlbumList } from './AlbumList';
+import { AlbumListItem } from './AlbumListItem';
 
-export interface PageProps {
+export interface Props {
   albums: Array<Album>;
   songs: Array<Song>;
 }
 
-export class Page extends React.Component<PageProps, {}> {
+export class Page extends React.Component<Props, undefined> {
+  props: Props;
+
   render() {
     return (
-      <div id="page">
-        {this.props.albums.map(album => <AlbumList album={album} songs={this.props.songs} />)}
-      </div>
+      <ul id="page">
+        {this.props.albums.map(album => <AlbumListItem album={album} songs={this.props.songs} />)}
+      </ul>
     );
   }
 }
