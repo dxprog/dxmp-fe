@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Album } from '../interfaces/album';
 import { Song } from '../interfaces/song';
 
-import { AlbumList } from './AlbumList';
+import { AlbumListItem } from './AlbumListItem';
 import { Player } from './Player';
 
-interface PageProps {
+interface Props {
   albums: Array<Album>;
   songs: Array<Song>;
 }
@@ -14,29 +14,30 @@ interface SongHashLookup {
   [key: number]: Array<Song>;
 }
 
-export class Page extends React.Component<PageProps, {}> {
+export class Page extends React.Component<Props, undefined> {
+  props: Props;
+
   private playerRef: Player;
   private songAlbumLookup: SongHashLookup;
 
-  render() {
-    return (
-      <div id="page">
-        {this.props.albums.map(album => {
-          if (this.songAlbumLookup[album.id]) {
-            return <AlbumList
-              key={`album-list-${album.id}`}
-              album={album}
-              songs={this.songAlbumLookup[album.id]}
-              onSongClick={(song: Song, album: Album) => this.playerRef.playSong(song, album)} />
-          }
-        })}
-        <Player ref={ref => this.playerRef = ref} />
-      </div>
-    );
-  }
-
   componentWillMount() {
     this.optimizeSongs();
+  }
+
+  render() {
+    return (
+      <ul id="page">
+        {this.props.albums.map(album => (
+          <AlbumListItem 
+            album={album} 
+            key={`album-list-${album.id}`}
+            songs={this.songAlbumLookup[album.id]} 
+            onSongClick={(song: Song, album: Album) => this.playerRef.playSong(song, album)}
+          />
+        ))}
+        <Player ref={ref => this.playerRef = ref} />
+      </ul>
+    );
   }
 
   optimizeSongs() {
