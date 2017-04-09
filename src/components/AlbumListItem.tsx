@@ -7,6 +7,9 @@ import { SongList } from './SongList';
 
 interface Props {
   album: Album;
+  directSongMatches: Array<Song>;
+  isDirectMatch: boolean;
+  isSearching: boolean;
   songs: Array<Song>;
   onSongClick: Function;
 }
@@ -36,17 +39,35 @@ export class AlbumListItem extends React.Component<Props, State> {
   }
 
   render() {
+    const songList = this.state.showSongList || this.props.isSearching
+    ? (
+      <SongList 
+        album={this.props.album}
+        directSongMatches={this.props.directSongMatches}
+        isExpanded={true}
+        songs={this.props.songs}
+        onSongClick={this.props.onSongClick}
+      />
+    )
+    : null;
     return (
       <li key={`album-${this.props.album.id}`}>
-        <div onClick={() => this.setState({showSongList: !this.state.showSongList})}>
+        <div onClick={this.onClick.bind(this)}>
           <AlbumListItemHeader 
             imageUrl={this.props.album.artUrl} 
             title={this.props.album.title} 
             id={this.props.album.id}
+            isDirectMatch={this.props.isSearching && this.props.isDirectMatch}
           />
         </div>
-        {this.state.showSongList ? <SongList album={this.props.album} songs={this.props.songs} onSongClick={this.props.onSongClick}/> : null}
+        {songList}
       </li>
     );
+  }
+
+  onClick() {
+    if (!this.props.isSearching) {
+      this.setState({showSongList: !this.state.showSongList});
+    }
   }
 }
