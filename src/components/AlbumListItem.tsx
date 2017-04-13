@@ -45,6 +45,7 @@ export class AlbumListItem extends React.Component<Props, State> {
         album={this.props.album}
         directSongMatches={this.props.directSongMatches}
         isExpanded={true}
+        isSearching={this.props.isSearching}
         songs={this.props.songs}
         onSongClick={this.props.onSongClick}
       />

@@ -6,6 +6,7 @@ interface Props {
   album: Album;
   directSongMatches: Array<Song>;
   isExpanded: boolean;
+  isSearching: boolean;
   songs: Array<Song>;
   onSongClick: Function;
 }
@@ -33,7 +34,7 @@ export class SongList extends React.Component<Props, undefined> {
   renderSongListItem(song: Song) {
     const classNames = ['songListItem'];
     if (
-      this.props.directSongMatches && 
+      this.props.isSearching && 
       this.props.directSongMatches.some(s => s.id === song.id)
     ) {
       classNames.push('songListItemMatch');

@@ -43,29 +43,7 @@ export class AlbumList extends React.Component<Props, undefined> {
 
   componentWillReceiveProps(nextProps: Props) {
     if (nextProps.searchQuery !== this.props.searchQuery) {
-      this.albumMatches = [];
-      this.songMatches = {};
-      this.indirectAlbumMatches = new Set<number>();
-      for (let album of this.sortedAlbums) {
-        const albumTitle = album.title.toLowerCase();
-        if (albumTitle.indexOf(nextProps.searchQuery) !== -1) {
-          this.albumMatches.push(album);
-          this.songMatches[album.id] = [];
-        }
-      }
-      for (let song of this.props.songs) {
-        if (song.title) {
-          const songTitle = song.title.toLowerCase();
-          if (songTitle.indexOf(nextProps.searchQuery) !== -1) {
-            if (!this.songMatches[song.album_id]) {
-              this.songMatches[song.album_id] = [];
-              this.albumMatches.push(this.albumLookup[song.album_id]);
-              this.indirectAlbumMatches.add(song.album_id);
-            }
-            this.songMatches[song.album_id].push(song);
-          }
-        }
-      }
+      this.performSearchQuery(nextProps.searchQuery);
     }
   }
 
@@ -97,7 +75,6 @@ export class AlbumList extends React.Component<Props, undefined> {
 
   sortAlbums() {
     this.sortedAlbums = this.props.albums
-      .filter(a => !!a)
       .sort((a, b) => {
         let aTitle = this.formatAlbumTitle(a.title);
         let bTitle = this.formatAlbumTitle(b.title);
@@ -121,6 +98,32 @@ export class AlbumList extends React.Component<Props, undefined> {
         this.songAlbumLookup[song.album_id] = [];
       }
       this.songAlbumLookup[song.album_id].push(song);
+    }
+  }
+
+  performSearchQuery(searchQuery: string) {
+    this.albumMatches = [];
+    this.songMatches = {};
+    this.indirectAlbumMatches = new Set<number>();
+    for (let album of this.sortedAlbums) {
+      const albumTitle = album.title.toLowerCase();
+      if (albumTitle.indexOf(searchQuery) !== -1) {
+        this.albumMatches.push(album);
+        this.songMatches[album.id] = [];
+      }
+    }
+    for (let song of this.props.songs) {
+      if (song.title && this.albumLookup[song.album_id]) {
+        const songTitle = song.title.toLowerCase();
+        if (songTitle.indexOf(searchQuery) !== -1) {
+          if (!this.songMatches[song.album_id]) {
+            this.songMatches[song.album_id] = [];
+            this.albumMatches.push(this.albumLookup[song.album_id]);
+            this.indirectAlbumMatches.add(song.album_id);
+          }
+          this.songMatches[song.album_id].push(song);
+        }
+      }
     }
   }
 }
