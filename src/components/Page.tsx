@@ -3,7 +3,8 @@ import { Album } from '../interfaces/album';
 import { Song } from '../interfaces/song';
 
 import { AlbumListItem } from './AlbumListItem';
-import { Player } from './Player';
+import { PlayBar } from './PlayBar';
+import { Playlist } from './Playlist';
 
 interface Props {
   albums: Array<Album>;
@@ -17,7 +18,7 @@ interface SongHashLookup {
 export class Page extends React.Component<Props, undefined> {
   props: Props;
 
-  private playerRef: Player;
+  private playlistRef: Playlist;
   private songAlbumLookup: SongHashLookup;
 
   componentWillMount() {
@@ -26,17 +27,20 @@ export class Page extends React.Component<Props, undefined> {
 
   render() {
     return (
-      <ul id="page">
-        {this.props.albums.map(album => (
-          <AlbumListItem 
-            album={album} 
-            key={`album-list-${album.id}`}
-            songs={this.songAlbumLookup[album.id]} 
-            onSongClick={(song: Song, album: Album) => this.playerRef.playSong(song, album)}
-          />
-        ))}
-        <Player ref={ref => this.playerRef = ref} />
-      </ul>
+      <div id="page">
+        <ul id="album-list">
+          {this.props.albums.map(album => (
+            <AlbumListItem
+              album={album}
+              key={`album-list-${album.id}`}
+              songs={this.songAlbumLookup[album.id]}
+              onSongClick={(song: Song, album: Album) => this.playlistRef.queueSong(song, album)}
+            />
+          ))}
+        </ul>
+        <Playlist ref={ref => this.playlistRef = ref}  />
+        <PlayBar />
+      </div>
     );
   }
 
