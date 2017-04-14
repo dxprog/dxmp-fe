@@ -3,7 +3,8 @@ import { Album } from '../interfaces/album';
 import { Song } from '../interfaces/song';
 
 import { UIColumn } from './UIColumn';
-import { Player } from './Player';
+import { PlayBar } from './PlayBar';
+import { Playlist } from './Playlist';
 
 interface Props {
   albums: Array<Album>;
@@ -13,7 +14,7 @@ interface Props {
 export class Page extends React.Component<Props, undefined> {
   props: Props;
 
-  private playerRef: Player;
+  private playlistRef: Playlist;
 
   render() {
     return (
@@ -21,10 +22,11 @@ export class Page extends React.Component<Props, undefined> {
         <UIColumn 
           albums={this.props.albums} 
           songs={this.props.songs} 
-          onSongClick={(song: Song, album: Album) => this.playerRef.playSong(song, album)}
+          onSongClick={(song: Song, album: Album) => this.playlistRef.queueSong(song, album)}
         />
         <div className="artSection" />
-        <Player ref={ref => this.playerRef = ref} />
+        <Playlist ref={ref => this.playlistRef = ref}  />
+        <PlayBar />
       </div>
     );
   }
