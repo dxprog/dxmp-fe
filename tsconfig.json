@@ -6,10 +6,11 @@
     "module": "commonjs",
     "lib": [ "es2015", "dom" ],
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "typeRoots": [ "node_modules/@types" ],
+    "types": [ "sinon", "react", "react-dom", "mocha", "chai" ]
   },
   "files": [
-    "./typings/index.d.ts",
     "./src/index.tsx"
   ]
 }

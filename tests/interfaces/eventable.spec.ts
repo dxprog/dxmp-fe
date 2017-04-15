@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import 'sinon';
+import * as sinon from 'sinon';
 
 import Eventable from '../../src/interfaces/eventable';
 
