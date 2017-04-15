@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dxprog/dxmp-fe.svg)](https://travis-ci.org/dxprog/dxmp-fe)
+
 # dxmp-fe
 A home grown music playing client thing that runs on React.
 
