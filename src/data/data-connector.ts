@@ -16,7 +16,7 @@ export class DataConnector {
     params = Object.assign(params, { contentType, method: 'content.getContent' });
     const payload: DxApiResponse = await this.call(this.buildUrl('', params));
     const { body } = payload;
-    return body.content;
+    return Promise.resolve(body.content);
   }
 
   private async call(url: string, method: string = 'GET', payload: Object = {}): Promise<any> {

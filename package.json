@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dxprog/dxmp-fe#readme",
   "devDependencies": {
+    "@types/es6-shim": "^0.31.32",
     "grunt": "^1.0.1",
     "grunt-sass": "^1.2.1",
     "react": "^15.3.2",

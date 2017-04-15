@@ -5,7 +5,7 @@ A home grown music playing client thing that runs on React.
 
 ```
 # First time install
-npm install -g webpack typescript
+npm install -g webpack@1.* typescript@2.1.*
 npm link typescript
 npm install -g typings && typings install
 npm install
