@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/dxprog/dxmp-fe#readme",
   "devDependencies": {
+    "@types/chai": "^3.5.0",
     "@types/es6-shim": "^0.31.32",
+    "@types/mocha": "^2.2.40",
+    "@types/sinon": "^2.1.2",
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-sass": "^1.2.1",
