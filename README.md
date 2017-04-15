@@ -3,21 +3,36 @@
 # dxmp-fe
 A home grown music playing client thing that runs on React.
 
-## Installation
+## Development
 
-```
-# First time install
-npm install -g webpack@1.* typescript@2.1.*
-npm link typescript
-npm install -g typings && typings install
+### Installation
+
+You'll need node v6+. I recommend using [nvm](https://github.com/creationix/nvm). Once you have that, run:
+
+```bash
 npm install
+```
 
-# One time build
-webpack
+### Developing
 
-# Watch
-webpack --progress --colors --watch
+While developing, run the following to have the build environment watch for changes and rebuild:
 
-# Run the server
+```bash
+npm run watch
+```
+
+### Local Server
+
+A small node webserver is bundled to serve built content while developing. To run:
+
+```bash
 npm run server
+```
+
+### Building
+
+To create a full production build, run the following:
+
+```bash
+npm run build
 ```

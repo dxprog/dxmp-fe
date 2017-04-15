@@ -4,6 +4,8 @@
   "description": "Music playing front end for dxMusicPage",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
     "test": "karma start karma.unit.js",
     "server": "node server/index.js"
   },
