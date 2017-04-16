@@ -31,7 +31,7 @@ export class Playlist extends React.Component<Props, {}> {
     this.queue.push({ song, album, played: false });
 
     if (!AudioPlayer.isPlaying()) {
-      AudioPlayer.playAudio(this.getSongUrl(song));
+      AudioPlayer.playSong(song);
     }
   }
 
@@ -47,11 +47,7 @@ export class Playlist extends React.Component<Props, {}> {
     this.queuePosition++;
     if (this.queue.length > this.queuePosition) {
       const nextSong: PlaylistItem = this.queue[this.queuePosition];
-      AudioPlayer.playAudio(this.getSongUrl(nextSong.song));
+      AudioPlayer.playSong(nextSong.song);
     }
-  }
-
-  private getSongUrl(song: Song) {
-    return `http://dxmp.s3.amazonaws.com/songs/${song.filename}`;
   }
 }
