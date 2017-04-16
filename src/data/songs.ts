@@ -15,7 +15,7 @@ export class Songs extends DataConnector {
   }
 
   private convertDxApiToSong(data: any): Song {
-    const song: Song = {
+    const song: Song = new Song({
       id: data.id,
       title: data.title,
       album_id: data.parent,
@@ -24,7 +24,7 @@ export class Songs extends DataConnector {
       duration: data.meta.duration,
       created: data.date,
       added_by: 0
-    };
+    });
     return song;
   }
 }

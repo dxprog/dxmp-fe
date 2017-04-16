@@ -22,13 +22,13 @@ export class Albums extends DataConnector {
   public convertDxApiToAlbum(data: any): Album {
     const { meta } = data;
     const { art = '' } = meta || {};
-    const album: Album = {
+    const album: Album = new Album({
       id: data.id,
       title: data.title,
       art: !!art,
       artUrl: art,
       wallpaper: false
-    };
+    });
     return album;
   }
 }

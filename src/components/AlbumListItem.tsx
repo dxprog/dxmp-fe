@@ -18,15 +18,6 @@ interface State {
   showSongList: boolean;
 }
 
-function songClick(evt: MouseEvent) {
-  const audio = document.createElement('audio');
-  audio.addEventListener('canplaythrough', evt => {
-    audio.play();
-  });
-  audio.src = `http://dxmp.s3.amazonaws.com/songs/${this.filename}`;
-  audio.load();
-}
-
 export class AlbumListItem extends React.Component<Props, State> {
   props: Props;
   state: State;
@@ -41,7 +32,7 @@ export class AlbumListItem extends React.Component<Props, State> {
   render() {
     const songList = this.state.showSongList || this.props.isSearching
     ? (
-      <SongList 
+      <SongList
         album={this.props.album}
         directSongMatches={this.props.directSongMatches}
         isExpanded={true}
@@ -54,9 +45,9 @@ export class AlbumListItem extends React.Component<Props, State> {
     return (
       <li key={`album-${this.props.album.id}`}>
         <div onClick={this.onClick.bind(this)}>
-          <AlbumListItemHeader 
-            imageUrl={this.props.album.artUrl} 
-            title={this.props.album.title} 
+          <AlbumListItemHeader
+            imageUrl={this.props.album.artThumbnail}
+            title={this.props.album.title}
             id={this.props.album.id}
             isDirectMatch={this.props.isSearching && this.props.isDirectMatch}
           />
