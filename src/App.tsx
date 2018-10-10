@@ -1,9 +1,13 @@
-import * as React from 'react';
 import './App.scss';
+import { ArtPane } from './components/ArtPane';
+import { ControlPane } from './components/ControlPane';
 import * as xhr from './lib/xhr';
 
+import { IAlbum } from 'dxmp-common';
+import * as React from 'react';
+
 interface IState {
-  albums: any[],
+  albums: IAlbum[],
   expandInterface: boolean,
 };
 
@@ -19,10 +23,8 @@ class App extends React.Component<{}, IState> {
   public render() {
     return (
       <div className="App">
-        <div className="InfoPane" />
-        <div className="InterfacePane">
-          Controls
-        </div>
+        <ArtPane />
+        <ControlPane albums={this.state.albums} />
       </div>
     );
   }
