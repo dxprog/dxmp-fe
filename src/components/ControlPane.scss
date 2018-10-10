@@ -1,0 +1,26 @@
+.control-pane {
+  display: flex;
+  flex: 0 0 1;
+  flex-direction: column;
+
+  .list-pane {
+    background-color: #3e494f;
+    height: 500px;
+  }
+
+  .control-bar {
+    background-color: #242c2f;
+    display: flex;
+    flex: 0 0 1;
+    flex-direction: row;
+    height: 90px;
+
+    .media-controls {
+      align-items: center;
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}
