@@ -1,19 +1,28 @@
 import * as React from 'react';
 import './App.scss';
+import * as xhr from './lib/xhr';
 
-import logo from './logo.svg';
+interface IState {
+  albums: any[],
+  expandInterface: boolean,
+};
 
-class App extends React.Component {
+class App extends React.Component<{}, IState> {
+  public state: IState = {albums: [], expandInterface: false};
+
+  public async componentDidMount(): Promise<any> {
+    const albums = await xhr.request('http://api.dxmp.us/albums');
+    console.log(albums);
+    this.setState(albums);
+  }
+
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <div className="InfoPane" />
+        <div className="InterfacePane">
+          Controls
+        </div>
       </div>
     );
   }
