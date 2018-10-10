@@ -1,3 +1,5 @@
+import { ListPane } from './ListPane';
+
 import { IAlbum } from 'dxmp-common';
 import * as React from 'react';
 
@@ -35,6 +37,6 @@ export class ControlPane extends React.Component<IControlPaneProps, IControlPane
   }
 
   private renderListPane(): React.ReactNode {
-    return this.state.isExpanded ? <div className="list-pane" /> : null;
+    return this.state.isExpanded ? <ListPane albums={this.props.albums} /> : null;
   }
 }

@@ -1,0 +1,18 @@
+.list-pane {
+  background-color: #3e494f;
+  border-collapse: collapse;
+  height: 500px;
+
+  .meta-list {
+    background-color: #272f32;
+    width: 360px;
+  }
+
+  .results-list {
+  }
+
+  .queue {
+    background-color: #272f32;
+    width: 360px;
+  }
+}
