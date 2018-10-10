@@ -19,7 +19,7 @@ export class ControlPane extends React.Component<IControlPaneProps, IControlPane
       <div className="control-pane">
         {this.renderListPane()}
         <div className="control-bar">
-          <div onClick={this.onListButtonClicked}>EXPAND</div>
+          <button onClick={this.onListButtonClicked}>EXPAND</button>
           <div className="media-controls">
             BACK
             PLAY
@@ -35,9 +35,6 @@ export class ControlPane extends React.Component<IControlPaneProps, IControlPane
   }
 
   private renderListPane(): React.ReactNode {
-    if (!this.state.isExpanded) {
-      return null;
-    }
-    return <div className="list-pane" />;
+    return this.state.isExpanded ? <div className="list-pane" /> : null;
   }
 }
