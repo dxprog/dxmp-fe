@@ -1,0 +1,24 @@
+.album-art {
+  padding: 30px;
+  width: 300px;
+  height: 300px;
+
+  &__image {
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    display: block;
+
+    &--glow {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      filter: blur(12px);
+      opacity: .75;
+    }
+
+    &--shadow {
+      box-shadow: 0 0 2px 2px rgba(#000, .1);
+    }
+  }
+}
