@@ -16,6 +16,10 @@ interface IControlPaneState {
 export class ControlPane extends React.Component<IControlPaneProps, IControlPaneState> {
   public state: IControlPaneState = {isExpanded: false};
 
+  public componentDidMount(): void {
+    document.addEventListener("keypress", this.handleKeyPress.bind(this));
+  }
+
   public render(): React.ReactNode {
     return (
       <div className="control-pane">
@@ -37,6 +41,16 @@ export class ControlPane extends React.Component<IControlPaneProps, IControlPane
   }
 
   private renderListPane(): React.ReactNode {
-    return this.state.isExpanded ? <ListPane albums={this.props.albums} /> : null;
+    return this.state.isExpanded 
+      ? <ListPane albums={this.props.albums} /> : null;
+  }
+
+  private handleKeyPress(event: KeyboardEvent): void {
+    if (this.state.isExpanded) {
+      return;
+    }
+    if (event.charCode >= 33 && event.charCode <= 126) {
+      this.setState({isExpanded: true});
+    }
   }
 }

@@ -12,11 +12,13 @@ interface IState {
 };
 
 class App extends React.Component<{}, IState> {
-  public state: IState = {albums: [], expandInterface: false};
+  public state: IState = {
+    albums: [], 
+    expandInterface: false,
+  };
 
   public async componentDidMount(): Promise<any> {
     const albums = await xhr.request('http://api.dxmp.us/albums');
-    console.log(albums);
     this.setState(albums);
   }
 
@@ -28,6 +30,7 @@ class App extends React.Component<{}, IState> {
       </div>
     );
   }
+
 }
 
 export default App;

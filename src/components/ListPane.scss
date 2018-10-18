@@ -9,6 +9,19 @@
   }
 
   .results-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+
+    input {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 24pt;
+      font-weight: 300;
+      outline: none;
+    }
   }
 
   .queue {
