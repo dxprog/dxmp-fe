@@ -1,12 +1,13 @@
-import { ListPane } from './ListPane';
-
-import { IAlbum } from 'dxmp-common';
+import { IAlbum, ISong } from 'dxmp-common';
 import * as React from 'react';
+
+import { ListPane } from './ListPane';
 
 import './ControlPane.scss';
 
 interface IControlPaneProps {
   albums: IAlbum[],
+  songs: ISong[],
 };
 
 interface IControlPaneState {
@@ -42,7 +43,7 @@ export class ControlPane extends React.Component<IControlPaneProps, IControlPane
 
   private renderListPane(): React.ReactNode {
     return this.state.isExpanded 
-      ? <ListPane albums={this.props.albums} /> : null;
+      ? <ListPane albums={this.props.albums} songs={this.props.songs}/> : null;
   }
 
   private handleKeyPress(event: KeyboardEvent): void {
