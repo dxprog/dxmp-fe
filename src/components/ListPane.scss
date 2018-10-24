@@ -1,0 +1,31 @@
+.list-pane {
+  background-color: #3e494f;
+  border-collapse: collapse;
+  height: 500px;
+
+  .meta-list {
+    background-color: #272f32;
+    width: 360px;
+  }
+
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+
+    input {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 24pt;
+      font-weight: 300;
+      outline: none;
+    }
+  }
+
+  .queue {
+    background-color: #272f32;
+    width: 360px;
+  }
+}
