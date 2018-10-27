@@ -1,0 +1,29 @@
+.search-tab {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  height: 100%;
+  padding: 48px;
+
+  input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    flex: 0 0 1;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 48px;
+    outline: none;
+  }
+
+  .results-list {
+    align-content: flex-start;
+    display: flex;
+    flex: 1 1 0;
+    flex-flow: row wrap;
+    overflow-y: scroll;
+    word-break: break-all;
+  }
+}

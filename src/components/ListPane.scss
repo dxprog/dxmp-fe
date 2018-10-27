@@ -11,38 +11,6 @@
     width: 360px;
   }
 
-  .results-pane {
-    box-sizing: border-box;
-    display: flex;
-    flex: 1 1 0;
-    flex-direction: column;
-    height: 100%;
-    padding: 48px;
-
-    input {
-      background-color: transparent;
-      border: none;
-      color: white;
-      flex: 0 0 1;
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: 2rem;
-      font-weight: 300;
-      outline: none;
-    }
-
-    .results-list {
-      flex: 1 1 0;
-      word-break: break-all;
-      overflow-y: scroll;
-
-      .result {
-        .highlight {
-          background-color: yellow;
-        }
-      }
-    }
-  }
-
   .queue {
     background-color: #272f32;
     flex: 0 0 1;

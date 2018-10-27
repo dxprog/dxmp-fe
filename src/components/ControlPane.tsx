@@ -1,4 +1,4 @@
-import { IAlbum, ISong } from 'dxmp-common';
+import { Dictionary, IAlbum, ISong } from 'dxmp-common';
 import * as React from 'react';
 
 import { ListPane } from './ListPane';
@@ -6,7 +6,7 @@ import { ListPane } from './ListPane';
 import './ControlPane.scss';
 
 interface IControlPaneProps {
-  albums: IAlbum[],
+  albums: Dictionary<IAlbum>,
   songs: ISong[],
 };
 
