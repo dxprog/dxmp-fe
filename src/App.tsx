@@ -3,11 +3,11 @@ import { ArtPane } from './components/ArtPane';
 import { ControlPane } from './components/ControlPane';
 import * as xhr from './lib/xhr';
 
-import { IAlbum, ISong } from 'dxmp-common';
+import { Dictionary, IAlbum, ISong } from 'dxmp-common';
 import * as React from 'react';
 
 interface IState {
-  albums: {[albumID: number]: IAlbum},
+  albums: Dictionary<IAlbum>,
   expandInterface: boolean,
   songs: ISong[],
 };
