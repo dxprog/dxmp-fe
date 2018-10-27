@@ -14,7 +14,7 @@ interface ISongResultProps {
 export class SongResult extends React.PureComponent<ISongResultProps> {
   public render(): React.ReactNode {
     const { album, query, song } = this.props;
-    const queryPos = song.title.toLowerCase().indexOf(query);
+    const queryPos = song.title.search(new RegExp(query, 'i'));
     const prefix = song.title.substr(0, queryPos);
     const match = song.title.substr(queryPos, query.length);
     const suffix = song.title.substr(queryPos + query.length);

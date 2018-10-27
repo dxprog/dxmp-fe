@@ -1,4 +1,4 @@
-import { IAlbum, ISong } from 'dxmp-common';
+import { Dictionary, IAlbum, ISong } from 'dxmp-common';
 import * as React from 'react';
 
 import { SongResult } from './SongResult';
@@ -6,7 +6,7 @@ import { SongResult } from './SongResult';
 import './SearchTab.scss';
 
 interface ISearchTabProps {
-  albums: {[albumID: number]: IAlbum},
+  albums: Dictionary<IAlbum>,
   songs: ISong[],
 };
 
@@ -78,7 +78,7 @@ export class SearchTab extends React.Component<ISearchTabProps, ISearchTabState>
       : this.props.songs;
     const regEx = new RegExp(query, 'i');
     const queryResults = querySet.filter(
-      song => song.title.search(regEx) !== -1,
+      song => regEx.test(song.title),
     );
     this.setState({query, queryResults, scrollTop: 0});
   }
