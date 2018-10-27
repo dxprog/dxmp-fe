@@ -6,7 +6,7 @@ import { ListPane } from './ListPane';
 import './ControlPane.scss';
 
 interface IControlPaneProps {
-  albums: IAlbum[],
+  albums: {[albumID: number]: IAlbum},
   songs: ISong[],
 };
 

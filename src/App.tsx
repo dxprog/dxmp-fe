@@ -7,24 +7,29 @@ import { IAlbum, ISong } from 'dxmp-common';
 import * as React from 'react';
 
 interface IState {
-  albums: IAlbum[],
+  albums: {[albumID: number]: IAlbum},
   expandInterface: boolean,
   songs: ISong[],
 };
 
 class App extends React.Component<{}, IState> {
   public state: IState = {
-    albums: [], 
+    albums: {}, 
     expandInterface: false,
     songs: [],
   };
 
   public async componentDidMount(): Promise<any> {
-    const [albums, songs] = await Promise.all([
+    const [albumList, songs] = await Promise.all([
       xhr.request('http://api.dxmp.us/albums'),
       xhr.request('http://api.dxmp.us/songs'),
     ]);
-    this.setState({albums: albums as IAlbum[], songs: songs as ISong[]});
+
+    const albums = {};
+    for (const a of albumList as IAlbum[]) {
+      albums[a.id] = a;
+    }
+    this.setState({albums, songs: songs as ISong[]});
   }
 
   public render() {

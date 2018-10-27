@@ -1,0 +1,50 @@
+.song-result {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+  margin-bottom: 16px;
+  width: 50%;
+
+  &:hover {
+    background: #ffffff30;
+    border-radius: 4px;
+  }
+
+  img {
+    border-radius: 4px;
+    height: 64px;
+    width: 64px;
+  }
+
+  .song-info {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    justify-content: center;
+    margin-left: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .song-title {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      overflow: hidden;
+
+      .highlight {
+        border-radius: 2px;
+        background-color: yellow;
+        color: black;
+      }
+    }
+
+    .song-album-title {
+      color: #ccc;
+      font-size: 0.75rem;
+      overflow: hidden;
+    }
+  }
+}
