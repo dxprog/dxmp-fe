@@ -22,7 +22,7 @@ export class ListPane extends React.Component<IListPaneProps, IListPaneState> {
   public render(): React.ReactNode {
     return (
       <div className="list-pane">
-        <div className="meta-list"/>
+        <div className="tab-list"/>
         {this.renderCurrentTab()}
         <div className="queue"/>
       </div>
