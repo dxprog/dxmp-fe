@@ -1,10 +1,10 @@
+import { Dictionary, IAlbum, ISong } from 'dxmp-common';
+import * as React from 'react';
+
 import './App.scss';
 import { ArtPane } from './components/ArtPane';
 import { ControlPane } from './components/ControlPane';
 import * as xhr from './lib/xhr';
-
-import { Dictionary, IAlbum, ISong } from 'dxmp-common';
-import * as React from 'react';
 
 interface IState {
   albums: Dictionary<IAlbum>,
@@ -14,7 +14,7 @@ interface IState {
 
 class App extends React.Component<{}, IState> {
   public state: IState = {
-    albums: {}, 
+    albums: {},
     expandInterface: false,
     songs: [],
   };
@@ -25,7 +25,7 @@ class App extends React.Component<{}, IState> {
       xhr.request('http://api.dxmp.us/songs'),
     ]);
 
-    const albums = {};
+    const albums: Record<string, IAlbum> = {};
     for (const a of albumList as IAlbum[]) {
       albums[a.id] = a;
     }
