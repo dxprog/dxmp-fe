@@ -1,5 +1,6 @@
 import { Dictionary, IAlbum, ISong } from 'dxmp-common';
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.scss';
 import { ArtPane } from './components/ArtPane';
@@ -12,35 +13,34 @@ interface IState {
   songs: ISong[],
 };
 
-class App extends React.Component<{}, IState> {
-  public state: IState = {
-    albums: {},
-    expandInterface: false,
-    songs: [],
-  };
+const App = () => {
+  const [albums, setAlbumList] = useState<Record<string, IAlbum>>({});
+  const [songs, setSongs] = useState<ISong[]>([]);
+  const [expandInterface, setExpandInterface] = useState(false);
 
-  public async componentDidMount(): Promise<any> {
-    const [albumList, songs] = await Promise.all([
-      xhr.request('http://api.dxmp.us/albums'),
-      xhr.request('http://api.dxmp.us/songs'),
-    ]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const [ albumRes, songRes ] = await Promise.all([
+        xhr.request('//api.dxmp.us/albums') as Promise<IAlbum[]>,
+        xhr.request('//api.dxmp.us/songs') as Promise<ISong[]>,
+      ]);
 
-    const albums: Record<string, IAlbum> = {};
-    for (const a of albumList as IAlbum[]) {
-      albums[a.id] = a;
-    }
-    this.setState({albums, songs: songs as ISong[]});
-  }
+      setAlbumList(albumRes.reduce((acc: Record<string, IAlbum>, album) => {
+        acc[album.id] = album;
+        return acc;
+      }, {}));
+      setSongs(songRes as ISong[]);
+    };
 
-  public render() {
-    return (
-      <div className="App">
-        <ArtPane />
-        <ControlPane albums={this.state.albums} songs={this.state.songs}/>
-      </div>
-    );
-  }
+    fetchData();
+  });
 
-}
+  return (
+    <div className="App">
+      <ArtPane />
+      <ControlPane albums={albums} songs={songs}/>
+    </div>
+  );
+};
 
 export default App;
